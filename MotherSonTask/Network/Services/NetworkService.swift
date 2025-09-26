@@ -4,6 +4,7 @@
 //
 //  Created by sunil biloniya on 25/09/25.
 //
+
 import Foundation
 import Combine
 import Network
@@ -86,6 +87,7 @@ final class NetworkService: NetworkServiceProtocol {
                     print("❌ \(errorMessage)")
                     return Fail(error: NetworkError.invalidResponse(errorMessage)).eraseToAnyPublisher()
                 }
+                print(httpResponse.statusCode, "Http status code")
                 
                 guard (200...299).contains(httpResponse.statusCode) else {
                     return Fail(error: NetworkError.serverError("Status code: \(httpResponse.statusCode)")).eraseToAnyPublisher()

@@ -4,6 +4,7 @@
 //
 //  Created by sunil biloniya on 25/09/25.
 //
+
 import Foundation
 
 enum Endpoint {
@@ -43,11 +44,9 @@ enum Endpoint {
     
     func url(baseURL: String, apiKey: String) -> URL? {
         var components = URLComponents(string: baseURL + path)
-        
         var queryItems = self.queryItems
         queryItems.append(URLQueryItem(name: "api_key", value: apiKey))
         components?.queryItems = queryItems
-        
         return components?.url
     }
 } 
